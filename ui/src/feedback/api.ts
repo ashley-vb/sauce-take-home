@@ -1,9 +1,9 @@
 import {gql, request} from "graphql-request";
 
 export type Feedback = {
-  id: number
-  text: string
-  highlights?: Highlight[]
+    id: number
+    text: string
+    highlights?: Highlight[]
 }
 
 export type Highlight = {
@@ -20,9 +20,9 @@ const feedbacksDocument = gql`
         text
         highlights {
           id
-          quote 
+          quote
           summary
-         }
+        }
       }
       count
     }
@@ -31,11 +31,11 @@ const feedbacksDocument = gql`
 
 type FeedbacksData = { feedbacks: { values: Feedback[], count: number } }
 
-export const feedbacksQuery = async (page: number, perPage: number): Promise<FeedbacksData> => {
+export const feedbacksQuery = async (page: number, per_page: number): Promise<FeedbacksData> => {
     try {
         return await request('http://localhost:4000/graphql', feedbacksDocument, {
             page,
-            perPage
+            per_page
         });
     } catch (error) {
         console.error('Error fetching feedbacks:', error);
