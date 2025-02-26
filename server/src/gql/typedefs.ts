@@ -9,6 +9,7 @@ const typeDefs = /* GraphQL */ `
   
   type Mutation {
     createFeedback(text: String!): Feedback!
+    createBulkFeedbacks(texts: [String!]!): [Feedback!]!
   }
 
   type Feedback {
